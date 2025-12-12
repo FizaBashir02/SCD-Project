@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SoundCraft — Beginner Web DAW</title>
+  <meta name="description" content="SoundCraft - Web DAW prototype: dashboard, images, sounds, audio recorder, contact." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="splash-card">
+      <div class="splash-logo">🎵</div>
+      <h2>SoundCraft</h2>
+      <p class="small">Learn recording, mixing & exporting — right in your browser.</p>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <button id="splash-start" class="btn btn-primary">Get started</button>
+        <button id="splash-dismiss" class="btn btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🎵</div>
+      <div class="brand-text">
+        <div class="title">SoundCraft</div>
+        <div class="subtitle">Web DAW for Beginners</div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <div class="nav-links" id="nav-links">
+        <a href="#" class="nav-link" data-page="dashboard">Dashboard</a>
+
+        <div class="dropdown">
+          <button class="drop-btn">Menu ▾</button>
+          <div class="drop-content" id="menu-content">
+            <a href="#images-section">Images</a>
+            <a href="#audio-section">Audio</a>
+            <a href="#sound-section">Sound</a>
+          </div>
+        </div>
+
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost" id="open-login">Log in</button>
+        <button class="btn btn-primary" id="open-signup">Sign up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN SPA CONTAINER -->
+  <main class="container" id="app">
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active card" aria-hidden="false">
+      <div class="page-head">
+        <h1>Dashboard</h1>
+        <div class="page-actions">
+          <button class="btn btn-sm" data-page="audio">Open Recorder</button>
+          <button class="btn btn-sm" data-page="sound">Try Samples</button>
+          <button class="btn btn-sm" data-page="images">Browse Images</button>
+        </div>
+      </div>
+
+      <p class="lead">Welcome to SoundCraft — your browser-based playground for audio. Use the menu to explore images, sound samples, and the recorder.</p>
+
+      <div class="grid">
+        <div class="card small">
+          <h2>Overview</h2>
+          <p class="small"> <strong> Record, play, stop, and export audio <br> Track volume, mute, and solo controls <br> Waveform visualization for audio <br> Multi-page navigation: Dashboard, Images, Audio/Sound, Contact <br> Light/Dark theme toggle with automatic text color adjustment <br> Responsive design for desktop and mobile <br> Login/Signup modals for user interaction </strong> </p>
+        </div>
+
+        <div class="card small">
+          <h2>Project</h2>
+          <p class="small"> <strong>SoundCraft is a beginner-friendly web-based Digital Audio Workstation (DAW) that allows users to record, mix, and export audio tracks directly in the browser. It features a simple, intuitive interface with a mini DAW, waveform visualization, timeline controls, and track management. Users can also browse images, play audio files, and use a contact form. The project includes multi-page navigation, light/dark theme support, and a responsive design for desktop and mobile devices.</strong></p>
+        </div>
+
+        <div class="card small">
+          <h2>Shortcuts</h2>
+          <ul class="small"><strong>
+            <li>R — Record</li>
+            <li>Space — Play/Pause first clip</li>
+            <li>Ctrl/Cmd + E — Export</li></strong>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGES PAGE -->
+    <section id="images" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Images</h1>
+      </div>
+
+      <p class="lead">Select a category. Click any thumbnail to open it larger (demo placeholders).</p>
+
+      <div class="img-sections">
+        <div class="img-section">
+          <h3>Wallpaper</h3>
+          <div class="thumbs">
+            <div class="thumb" tabindex="0" aria-label="Wallpaper 1">Wallpaper 1</div>
+            <div class="thumb" tabindex="0" aria-label="Wallpaper 2">Wallpaper 2</div>
+            <div class="thumb" tabindex="0" aria-label="Wallpaper 3">Wallpaper 3</div>
+          </div>
+        </div>
+
+        <div class="img-section">
+          <h3>Painting</h3>
+          <div class="thumbs">
+            <div class="thumb" tabindex="0">Painting 1</div>
+            <div class="thumb" tabindex="0">Painting 2</div>
+            <div class="thumb" tabindex="0">Painting 3</div>
+          </div>
+        </div>
+
+        <div class="img-section">
+          <h3>Nature</h3>
+          <div class="thumbs">
+            <div class="thumb" tabindex="0">Nature 1</div>
+            <div class="thumb" tabindex="0">Nature 2</div>
+            <div class="thumb" tabindex="0">Nature 3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUND PAGE -->
+    <section id="sound" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Sound Samples</h1>
+      </div>
+
+      <p class="lead">Generated demo sounds — click Play to audition.</p>
+
+      <div class="samples">
+        <div class="sample card">
+          <div>
+            <strong>Sine Tone (A4)</strong>
+            <div class="small">Pure tone, 440 Hz</div>
+          </div>
+          <div><button class="btn btn-sm play-sample" data-sample="sine">Play</button></div>
+        </div>
+
+        <div class="sample card">
+          <div>
+            <strong>Square Buzz</strong>
+            <div class="small">200 Hz square wave</div>
+          </div>
+          <div><button class="btn btn-sm play-sample" data-sample="square">Play</button></div>
+        </div>
+
+        <div class="sample card">
+          <div>
+            <strong>Noise Burst</strong>
+            <div class="small">Short white noise</div>
+          </div>
+          <div><button class="btn btn-sm play-sample" data-sample="noise">Play</button></div>
+        </div>
+
+        <div class="sample card">
+          <div>
+            <strong>Player</strong>
+            <div class="small">Play generated sound or recorded clips below</div>
+          </div>
+          <div><button class="btn btn-sm" id="play-first-clip">Play First Clip</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIO PAGE (DAW / recorder / timeline) -->
+    <section id="audio" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Audio Recorder & Mini DAW</h1>
+      </div>
+
+      <p class="lead">Record from your microphone, view a live waveform, manage clips. Export available.</p>
+
+      <div class="rec-row">
+        <div class="controls-left">
+          <button id="rec-btn" class="btn btn-primary">● Record</button>
+          <button id="stop-btn" class="btn btn-ghost">■ Stop</button>
+          <button id="playback-btn" class="btn btn-sm">▶ Play Last</button>
+          <button id="export-btn" class="btn btn-sm">⬇ Export</button>
+        </div>
+        <div class="timer" id="rec-timer">00:00</div>
+      </div>
+
+      <div class="wave-wrapper">
+        <canvas id="rec-wave" class="waveform" width="800" height="110"></canvas>
+      </div>
+
+      <h3 style="margin-top:12px">Timeline / Clips</h3>
+      <ul id="clips" class="clips"></ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Contact</h1>
+      </div>
+
+      <p class="lead">Questions, feedback or bug reports — send a message (demo only).</p>
+
+      <form id="contact-form" class="contact-form" autocomplete="on">
+        <label>Name
+          <input type="text" name="name" required placeholder="Your name">
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required placeholder="you@example.com">
+        </label>
+
+        <label>Message
+          <textarea name="message" rows="4" required placeholder="Write your message"></textarea>
+        </label>
+
+        <div style="text-align:right">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+
+      <div id="contact-status" class="small" style="margin-top:8px"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div>SoundCraft — Beginner Web DAW</div>
+      <div class="small">MVP: record / play / export • sample generator • image gallery</div>
+    </div>
+  </footer>
+
+  <!-- LOGIN / SIGNUP MODALS -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
