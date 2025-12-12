@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundCraft — Web DAW for Beginners</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="splash" class="splash">
+    <div class="splash-card">
+      <div class="splash-logo">🎵</div>
+      <h2>SoundCraft</h2>
+      <p class="small">Record, mix & export audio — directly in your browser!</p>
+      <div class="splash-buttons">
+        <button id="splash-start" class="btn btn-primary">Get Started</button>
+        <button id="splash-dismiss" class="btn btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🎵</div>
+      <div class="brand-text">
+        <div class="title">SoundCraft</div>
+        <div class="subtitle">Web DAW</div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#" data-page="dashboard" class="nav-link active">Dashboard</a>
+        <a href="#" data-page="images" class="nav-link">Images</a>
+        <a href="#" data-page="audio" class="nav-link">Audio</a>
+        <a href="#" data-page="sound" class="nav-link">Sound</a>
+        <a href="#" data-page="contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" id="open-login">Log in</button>
+        <button class="btn btn-primary" id="open-signup">Sign up</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" id="app">
+
+    <section id="dashboard" class="page active card" aria-hidden="false">
+      <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>WaveForm Studio 🎹</h1>
+          <p class="lead">Unleash your sound potential. Record, mix, and export audio with our beginner-friendly, in-browser Digital Audio Workstation.</p>
+          <button id="hero-cta" class="btn btn-primary">Start Mixing Now →</button> 
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card small">
+          <h2>Quick Actions</h2>
+          <ul class="small">
+            <li>Record your voice</li>
+            <li>Play preloaded sound samples</li>
+            <li>Export recordings as WAV/WebM</li>
+            <li>Browse beautiful images</li>
+          </ul>
+        </div>
+        <div class="card small">
+          <h2>Did You Know?</h2>
+          <p class="small">SoundCraft uses the <strong>Web Audio API</strong> to generate tones, visualize waveforms, and process audio clips in real-time. You can layer clips, solo/mute tracks, and explore sound design directly in your browser!</p>
+        </div>
+        <div class="card small">
+          <h2>Tips</h2>
+          <ul class="small">
+            <li>🎧 Use headphones for better audio quality</li>
+            <li>🔊 Adjust your mic input before recording</li>
+            <li>💾 Save your recordings to your device</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="images" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Images Gallery</h1>
+      </div>
+      <p class="lead">Click an image to preview. Explore wallpapers, paintings, and nature.</p>
+      <div class="img-sections">
+        <div class="img-section">
+          <h1>Wallpapers</h1>
+          <div class="thumbs">
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=1')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=2')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=3')" tabindex="0"></div>
+          </div>
+        </div>
+        <div class="img-section">
+          <h1>Paintings</h1>
+          <div class="thumbs">
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=4')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=5')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=6')" tabindex="0"></div>
+          </div>
+        </div>
+        <div class="img-section">
+          <h1>Nature</h1>
+          <div class="thumbs">
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=7')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=8')" tabindex="0"></div>
+            <div class="thumb" style="background-image:url('https://picsum.photos/300/200?random=9')" tabindex="0"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audio" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Audio Recorder & Mini DAW</h1>
+      </div>
+      <p class="lead">Record your voice, visualize waveform, and manage audio clips.</p>
+
+      <div class="rec-row">
+        <div class="controls-left">
+          <button id="rec-btn" class="btn btn-primary">● Record</button>
+          <button id="stop-btn" class="btn btn-ghost">■ Stop</button>
+          <button id="playback-btn" class="btn btn-sm">▶ Play Last</button>
+          <button id="export-btn" class="btn btn-sm">⬇ Export</button>
+        </div>
+        <div class="timer" id="rec-timer">00:00</div>
+      </div>
+
+      <div class="wave-wrapper">
+        <canvas id="rec-wave" class="waveform" width="800" height="120"></canvas>
+      </div>
+
+      <h3>Timeline / Clips</h3>
+      <ul id="clips" class="clips"></ul>
+    </section>
+
+    <section id="sound" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Sound Samples</h1>
+      </div>
+      <p class="lead">Generated demo sounds — click Play to hear them.</p>
+      <div class="samples">
+        <div class="sample card">
+          <div><strong>Sine Tone (A4)</strong><div class="small">Pure 440 Hz tone</div></div>
+          <div><button class="btn btn-sm play-sample btn-primary" data-sample="sine">Play</button></div>
+        </div>
+        <div class="sample card">
+          <div><strong>Square Buzz</strong><div class="small">200 Hz square wave</div></div>
+          <div><button class="btn btn-sm play-sample btn-primary" data-sample="square">Play</button></div>
+        </div>
+        <div class="sample card">
+          <div><strong>Noise Burst</strong><div class="small">Short white noise</div></div>
+          <div><button class="btn btn-sm play-sample btn-primary" data-sample="noise">Play</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="page card" aria-hidden="true">
+      <div class="page-head">
+        <button class="back-btn" data-back>← Back</button>
+        <h1>Contact</h1>
+      </div>
+      <p class="lead">Send feedback or report bugs.</p>
+      <form id="contact-form" class="contact-form" autocomplete="on">
+        <label>Name<input type="text" name="name" required placeholder="Your name"></label><br>
+        <label>Email<input type="email" name="email" required placeholder="you@example.com"></label><br>
+        <label>Message<textarea name="message" rows="4" required placeholder="Write your message"></textarea></label>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+      <div id="contact-status" class="small"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>SoundCraft — Beginner Web DAW</div>
+      <div class="small">Record • Play • Export • Gallery • Sound Samples</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
